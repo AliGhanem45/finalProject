@@ -1,0 +1,1 @@
+<p>{{$author->name}} , {{$commentor->name}} commented on your post</p>
