@@ -33,6 +33,7 @@ Route::delete('/profiles/{user}',[ProfileController::class , 'deleteProfilePic']
 Route::delete('/profile/{user}',[ProfileController::class, 'deleteCoverPic'])->name('delete.cover.pic');
 route::resource('comments',CommentController::class)->only(['index','store']);
 Route::delete('/comments/{comment}',[CommentController::class,'destroy'])->name('comments.destroy');
+Route::post('/comments/{post}',[CommentController::class,'store'])->name('comments.store');
 Route::post('/users/{user}/follow',[FollowController::class,'follow'])->middleware('auth')->name('users.follow');
 Route::post('/users/{user}/unfollow',[FollowController::class,'unfollow'])->middleware('auth')->name('users.unfollow');
 Route::post('posts/{post}/like',[LikePostController::class,'like'])->middleware('auth')->name('posts.like');

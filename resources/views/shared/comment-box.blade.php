@@ -3,7 +3,7 @@
     <div class="comment-input-container">
         <div class="comment-input-wrapper">
             <img src="{{ Auth::user()->profilePic ? asset('storage/' . Auth::user()->profilePic) : asset('storage/uploads/defaultUser.jpg') }}" class="comment-user-avatar">
-            <form class="comment-form" action="{{ route('comments.store') }}" method="POST">
+            <form class="comment-form" action="{{ route('comments.store',$post->id) }}" method="POST">
                 @csrf
                 <input type="hidden" name="post_id" value="{{ $post->id ?? '' }}">
                 <div class="comment-input-field">
