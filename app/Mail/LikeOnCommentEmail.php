@@ -9,19 +9,17 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CommentOnPostEmail extends Mailable
+class LikeOnCommentEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    private $commentor;
-    private $author;
 
     /**
      * Create a new message instance.
      */
-    public function __construct( $commentor,$postOwner)
+    public function __construct($commentOwner,$user)
     {
-        $this->commentor = $commentor;
-        $this->postOwner = $postOwner;
+        $this->commentOwner = $commentOwner;
+        $this->user = $user;
     }
 
     /**
@@ -30,7 +28,7 @@ class CommentOnPostEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Comment On Post Email',
+            subject: 'Like On Comment Email',
         );
     }
 
@@ -40,10 +38,10 @@ class CommentOnPostEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.comment-on-post-email',
+            view: 'emails.like-on-comment-email',
             with:[
-                'postOwner'=> $this->postOwner,
-                'commentor'=> $this->commentor
+                'commentOwner'=> $this->commentOwner,
+                'user'=> $this->user
             ]
         );
     }

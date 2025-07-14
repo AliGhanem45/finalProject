@@ -99,7 +99,17 @@
                     <div>
                         <a href="{{route('profile.show',$topUser->id)}}">{{$topUser->name}}</a>
                         <p>{{$topUser->profession}}</p>
-                        <button>Follow</button>
+                        @if (Auth::user()->follows($topUser))
+                            <form action="{{ route('users.unfollow',$topUser->id) }}" method="POST">
+                                @csrf
+                                <button type="submit">{{__('Joblink.UnFollow')}}</button>
+                            </form>
+                        @else    
+                            <form action = "{{ route('users.follow',$topUser->id) }}" method = "POST">
+                                @csrf
+                            <button type="submit">{{__('Joblink.Follow')}}</button>
+                            </form>
+                        @endif    
                     </div>
                 </div>
             @endforeach

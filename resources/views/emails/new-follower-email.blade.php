@@ -1,0 +1,1 @@
+<p>{{ $user->name }}, {{ $follower->name }} started following you</p>

@@ -34,10 +34,12 @@ Route::delete('/profile/{user}',[ProfileController::class, 'deleteCoverPic'])->n
 route::resource('comments',CommentController::class)->only(['index','store']);
 Route::delete('/comments/{comment}',[CommentController::class,'destroy'])->name('comments.destroy');
 Route::post('/users/{user}/follow',[FollowController::class,'follow'])->middleware('auth')->name('users.follow');
-Route::post('/users/{user}/unfollow',[FollowerController::class,'unfollow'])->middleware('auth')->name('users.unfollow');
+Route::post('/users/{user}/unfollow',[FollowController::class,'unfollow'])->middleware('auth')->name('users.unfollow');
 Route::post('posts/{post}/like',[LikePostController::class,'like'])->middleware('auth')->name('posts.like');
 Route::post('posts/{post}/unlike',[LikePostController::class,'unlike'])->middleware('auth')->name('posts.unlike');
 Route::post('comments/{comment}/like',[CommentLikeController::class,'like'])->middleware('auth')->name('comments.like');
 Route::post('comments/{comment}/unlike',[CommentLikeController::class,'unlike'])->middleware('auth')->name('comments.unlike');
-
+Route::get('/users', function () {
+    return view('user-list');
+})->name('users.list');
 require __DIR__.'/auth.php';

@@ -1,0 +1,1 @@
+<p>{{ $commentOwner->name }},{{ $user->name }} liked your comment</p>

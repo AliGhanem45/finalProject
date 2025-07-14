@@ -1,1 +1,1 @@
-<p>{{$author->name}} , {{$commentor->name}} commented on your post</p>
+<p>{{ $PostOwner->name }},{{$commentor->name}} commented on your post</p>

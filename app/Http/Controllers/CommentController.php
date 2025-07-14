@@ -31,7 +31,6 @@ class CommentController extends Controller
      */
     public function store(Post $post)
     {
-        $post->load('user');
        $validated = request()->validate([
             "content"=>"required|string|max:1000",
             "post_id" => "required|exists:posts,id",
@@ -39,8 +38,8 @@ class CommentController extends Controller
         $validated['user_id'] = auth()->user()->id;
         Comment::create($validated);
         $commentor = auth()->user();
-        $author =$post->user;
-        Mail::to($author->email)->send(new CommentOnPostEmail($commentor,$author));
+        $postOwner = $post->user;
+        Mail::to($postOwner->email)->send(new CommentOnPostEmail($commentor,$postOwner));
         return back();
     }
 
