@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Search;
 class DashboardController extends Controller
 {
     /**
@@ -11,11 +12,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->paginate(100);
+        $posts = Post::latest();
         if(request()->has('search')){
-            $posts = Post::where('content','like','%' . request()->get('search','') . '%')->latest()->paginate(100);
+            $posts = Post::where('content','like','%' . request()->get('search','') . '%')->latest();
+            $search = Search::create([
+                'content'=>request()->get('search'),
+                'user_id'=> auth()->user()->id
+            ]);
         }
-        return view('explore',compact('posts'));
+        return view('explore',["posts"=>$posts->paginate(100)]);
     }
 
     /**

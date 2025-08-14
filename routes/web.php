@@ -8,6 +8,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikePostController;
 use App\Http\Controllers\CommentLikeController;
+use App\Http\Controllers\FeedController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +22,7 @@ Route::get('/users', function () {
     return view('user-list');
 })->name('userList');
 Route::get('/explore',[DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/feed',[FeedController::class,'index'])->middleware(['auth', 'verified'])->name('feed');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profiles', [ProfileController::class, 'edit'])->name('profile.edit');

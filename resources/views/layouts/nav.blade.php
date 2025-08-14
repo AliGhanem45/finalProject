@@ -18,7 +18,7 @@
             <li><a href="#" class="active-link"><img src="{{url('images/home.png')}}"> <span>Home</span></a></li>
             <li><a href="#"><img src="{{url('images/network.png')}}"> <span>My Network</span></a></li>
             <li><a href="{{route('users.list')}}"><img src="{{url('images/jobs.png')}}"> <span>People</span></a></li>
-            <li><a href="#"><img src="{{url('images/message.png')}}"> <span>Messaging</span></a></li>
+            <li><a href="{{ route('feed') }}"><img src="{{url('images/message.png')}}"> <span>Feed</span></a></li>
             <li><a href="#"><img src= "{{url('images/notification.png')}}"> <span>Notifications</span></a></li>
         </ul>
     </div>

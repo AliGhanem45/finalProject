@@ -19,12 +19,11 @@
 
     <div class="sidebar-activity" id="sidebarActivity">
         <h3>{{__('Joblink.RECENT')}}</h3>
-        <a href="#"><img src="{{url('images/recent.png')}}"> Web Development</a>
-        <a href="#"><img src="{{url('images/recent.png')}}"> User Interface</a>
-        <a href="#"><img src="{{url('images/recent.png')}}"> Online Learning</a>
-        <a href="#"><img src="{{url('images/recent.png')}}"> Learn Online</a>
-        <a href="#"><img src="{{url('images/recent.png')}}"> Code Better</a>
-        <a href="#"><img src="{{url('images/recent.png')}}"> Group Learning</a>
+        @forelse(Auth::user()->searches as $search)
+            <a href="#"><img src="{{url('images/recent.png')}}"> {{$search->content}}</a>
+        @empty
+            <p>No searches</p>
+        @endforelse    
         <div class="discover-more-link">
             <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1">Discover more</a>
         </div>
