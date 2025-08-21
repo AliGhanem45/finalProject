@@ -23,38 +23,49 @@ class User extends Authenticatable
         'location',
         'profession',
         'bio',
+        'role',
         'profilePic',
         'coverPic'
     ];
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
-    public function searches(){
+    public function searches()
+    {
         return $this->hasMany(Search::class);
     }
-    public function followings(){
-        return $this->belongsToMany(User::class,'follower_user','follower_id','user_id')->withTimeStamps();
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'follower_user', 'follower_id', 'user_id')->withTimeStamps();
     }
-    public function followers(){
-        return $this->belongsToMany(User::class,'follower_user','user_id','follower_id')->withTimeStamps();
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follower_user', 'user_id', 'follower_id')->withTimeStamps();
     }
-    public function follows(User $user){
-        return $this->followings()->where('user_id',$user->id)->exists();
+    public function follows(User $user)
+    {
+        return $this->followings()->where('user_id', $user->id)->exists();
     }
-    public function likes(){
-        return $this->belongsToMany(Post::class,'like_post')->withTimeStamps();
+    public function likes()
+    {
+        return $this->belongsToMany(Post::class, 'like_post')->withTimeStamps();
     }
-    Public function liking(Post $post){
-        return $this->likes()->where('post_id',$post->id)->exists();
+    public function liking(Post $post)
+    {
+        return $this->likes()->where('post_id', $post->id)->exists();
     }
-    public function commentlike(){
-        return $this->belongsToMany(Comment::class,'comment_like')->withTimeStamps();
+    public function commentlike()
+    {
+        return $this->belongsToMany(Comment::class, 'comment_like')->withTimeStamps();
     }
-    public function commentliking(Comment $comment){
-        return $this->commentlike()->where('comment_id',$comment->id)->exists();
+    public function commentliking(Comment $comment)
+    {
+        return $this->commentlike()->where('comment_id', $comment->id)->exists();
     }
 
     /**
@@ -79,18 +90,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function getProfilePic(){
-        if($this->profilePic){
+    public function getProfilePic()
+    {
+        if ($this->profilePic) {
             return url('storage/' . $this->profilePic);
         }
-         return asset('storage/uploads/defaultUser.jpg');
-        
+        return asset('storage/uploads/defaultUser.jpg');
     }
-    public function getCoverPic(){
-        if($this->coverPic){
+    public function getCoverPic()
+    {
+        if ($this->coverPic) {
             return url('storage/' . $this->coverPic);
         }
-         return asset('storage/uploads/defaultUser.jpg');
-        
+        return asset('storage/uploads/defaultUser.jpg');
     }
 }

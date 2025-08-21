@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('bio')->nullable();
             $table->string('profession')->nullable();
             $table->string('location')->nullable();
+            $table->tinyInteger('role')->default(1);
             $table->string('profilePic')->nullable();
             $table->string('coverPic')->nullable();
 

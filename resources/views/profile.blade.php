@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends( auth()->user()->role == 0 ? 'layouts.adminlayout' : 'layouts.layout')
 @section('content')
 <div class="profile-main">
     <div class="profile-container">
@@ -73,8 +73,8 @@
             <img src="{{url('images/comment.png')}}">
             <a href={{ route('posts.show',$post->id)}}>{{__('Joblink.Comment')}}</a>
         </div>
-        
-        
+
+
     </div>
 </div>
 <form id="deletePost" method="POST" action="{{ route('posts.destroy',$post->id) }}">
@@ -83,7 +83,7 @@
 </form>
         @empty
         @endforelse
-        
+
     </div>
 </div>
 <!-- ------profile-sidebar------ -->
@@ -104,16 +104,16 @@
                                 @csrf
                                 <button type="submit">{{__('Joblink.UnFollow')}}</button>
                             </form>
-                        @else    
+                        @else
                             <form action = "{{ route('users.follow',$topUser->id) }}" method = "POST">
                                 @csrf
                             <button type="submit">{{__('Joblink.Follow')}}</button>
                             </form>
-                        @endif    
+                        @endif
                     </div>
                 </div>
             @endforeach
-            
+
         </div>
         <div class="sidebar-useful-links">
             <a href="#">About</a>
@@ -123,7 +123,7 @@
             <a href="{{ route('language','ar') }}">ar</a>
             <a href="{{ route('language','en') }}">en</a>
             </div>
-        
+
 
             <div class="copyright-msg">
                 <img src="{{url('images/logo.jpg')}}">
@@ -148,7 +148,7 @@
     }
 
 </script>
-    
+
 </body>
 </html>
 @endsection
