@@ -8,8 +8,9 @@
         @include('shared.create-post')
         <div class="sort-by">
             <hr>
-            
+
         </div>
+        <p>Suggested For You</p>
         @foreach ($posts as $post)
         @include('shared.post-card')
         @endforeach

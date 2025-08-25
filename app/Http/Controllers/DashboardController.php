@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Search;
+use App\Models\User;
+
 class DashboardController extends Controller
 {
     /**
@@ -12,17 +14,30 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest();
-        if(request()->has('search')){
-            $posts = Post::where('content','like','%' . request()->get('search','') . '%')->latest();
+        $ids = User::where('profession', auth()->user()->profession)->pluck('id');
+
+        $posts = Post::whereIn('user_id', $ids)->get();
+
+        if (request()->has('search')) {
+            $posts = Post::where('content', 'like', '%' . request()->get('search', '') . '%')->latest();
             $search = Search::create([
-                'content'=>request()->get('search'),
-                'user_id'=> auth()->user()->id
+                'content' => request()->get('search'),
+                'user_id' => auth()->user()->id
             ]);
         }
-        return view('explore',["posts"=>$posts->paginate(100)]);
+        return view('explore', ["posts" => $posts]);
     }
 
+    public function user_list()
+    {
+
+        $users = User::where("role", 1)->get();
+
+        if (request()->has("search")) {
+            $users = User::where("name", 'like', "%" . request()->get("search", "") . "%")->get();
+        }
+        return view('user-list', ['users' => $users]);
+    }
     /**
      * Show the form for creating a new resource.
      */

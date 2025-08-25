@@ -19,11 +19,12 @@ Route::get('/lang/{lang}', function ($lang) {
     session()->put('locale', $lang);
     return back();
 })->name('language');
-Route::get('/users', function () {
-    return view('user-list');
-})->name('userList');
-Route::get('/explore', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/feed', [FeedController::class, 'index'])->middleware(['auth', 'verified'])->name('feed');
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/explore', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/feed', [FeedController::class, 'index'])->name('feed');
+    Route::get('/users', [DashboardController::class, 'user_list'])->name('userList');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profiles', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -43,9 +44,7 @@ Route::post('posts/{post}/like', [LikePostController::class, 'like'])->middlewar
 Route::post('posts/{post}/unlike', [LikePostController::class, 'unlike'])->middleware('auth')->name('posts.unlike');
 Route::post('comments/{comment}/like', [CommentLikeController::class, 'like'])->middleware('auth')->name('comments.like');
 Route::post('comments/{comment}/unlike', [CommentLikeController::class, 'unlike'])->middleware('auth')->name('comments.unlike');
-Route::get('/users', function () {
-    return view('user-list');
-})->name('users.list');
+
 
 Route::middleware(['auth', 'role:admin'])->prefix("/admin")->controller(AdminController::class)->group(function () {
     // Route::get("/dashboard", 'admin_dashboard')->name("admin.dashboard");
