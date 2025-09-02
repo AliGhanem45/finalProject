@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+
 
 class ProfileController extends Controller
 {
@@ -51,6 +53,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        // Gate::authorize('update',$request);
         $validated = $request->validated();
         $request->user()->fill($validated);
 
@@ -78,6 +81,7 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // gate::authorize('delete',$request);
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);

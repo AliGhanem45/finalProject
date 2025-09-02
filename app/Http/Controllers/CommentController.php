@@ -8,6 +8,8 @@ use App\Models\Post;
 use App\Models\User;
 use App\Mail\CommentOnPostEmail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Gate;
+
 class CommentController extends Controller
 {
     /**
@@ -39,7 +41,7 @@ class CommentController extends Controller
         Comment::create($validated);
         $commentor = auth()->user();
         $postOwner = $post->user;
-        Mail::to($postOwner->email)->send(new CommentOnPostEmail($commentor,$postOwner));
+        // Mail::to($postOwner->email)->send(new CommentOnPostEmail($commentor,$postOwner));
         return back();
     }
 
@@ -72,6 +74,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        Gate::authorize('delete',$comment);
         $comment->delete();
         return back();
     }

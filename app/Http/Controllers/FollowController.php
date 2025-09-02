@@ -11,7 +11,7 @@ class FollowController extends Controller
     public function follow(User $user){
         $follower = auth()->user();
         $follower->followings()->attach($user);
-        Mail::to($user->email)->send(New NewFollowerEmail($follower,$user));
+        // Mail::to($user->email)->send(New NewFollowerEmail($follower,$user));
         return back();
     
     }

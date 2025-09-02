@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $posts = Post::whereIn('user_id', $ids)->get();
 
         if (request()->has('search')) {
-            $posts = Post::where('content', 'like', '%' . request()->get('search', '') . '%')->latest();
+            $posts = Post::where('content', 'like', '%' . request()->get('search', '') . '%')->latest()->get();
             $search = Search::create([
                 'content' => request()->get('search'),
                 'user_id' => auth()->user()->id
@@ -35,8 +35,19 @@ class DashboardController extends Controller
 
         if (request()->has("search")) {
             $users = User::where("name", 'like', "%" . request()->get("search", "") . "%")->get();
+            $search = Search::create([
+                'content' => request()->get('search'),
+                'user_id' => auth()->user()->id
+            ]);
         }
-        return view('user-list', ['users' => $users]);
+        return view('pumk', ['users' => $users]);
+    }
+    public function follower_list(){
+        $user = auth()->user();
+        $followersId=$user->followings()->pluck('user_id');
+        $followers = User::whereIn('id',$followersId)->get();
+        return view('followers', ['users' => $followers]);
+
     }
     /**
      * Show the form for creating a new resource.

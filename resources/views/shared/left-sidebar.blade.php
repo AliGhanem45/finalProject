@@ -22,12 +22,13 @@
         @forelse(Auth::user()->searches as $search)
             <a href="#"><img src="{{url('images/recent.png')}}"> {{$search->content}}</a>
         @empty
-            <p>No searches</p>
+            <p>{{__('Joblink.No searches')}}</p>
         @endforelse    
         <div class="discover-more-link">
-            <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1">Discover more</a>
+            {{-- <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1">Discover more</a> --}}
         </div>
     </div>
+    
 
     <p id="showMoreLink" onclick="toggleActivity()">Show more <b>+</b></p>
 </div>

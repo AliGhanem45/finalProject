@@ -8,6 +8,20 @@
     <title>JobBridge</title>
     <link rel="stylesheet" href="{{ url('CSS/style.css') }}">
        @vite(['resources/css/app.css', 'resources/js/app.js'])
+       <style>
+      .linkedin-blue {
+        background-color: #0a66c2;
+      }
+      .text-linkedin {
+        color: #0a66c2;
+      }
+      .border-linkedin {
+        border-color: #0a66c2;
+      }
+      .main-content {
+        flex-basis: 47%;
+      }
+    </style>
 </head>
 
 <body>

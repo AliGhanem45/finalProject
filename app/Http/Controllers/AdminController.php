@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -16,7 +17,15 @@ class AdminController extends Controller
             $users = User::where('name', 'like', '%' . request()->get('search', '') . '%')->get();
         }
 
-        return view("admin/usersList", ['users' => $users]);
+        return view("usertables", ['users' => $users]);
+    }
+    public function get_all_posts(User $user){
+        $posts = $user->posts()->get();
+        return view("posttables", ['posts' => $posts]);
+    }
+    public function get_all_comments(Post $post){
+        $comments = $post->comments()->get();
+        return view("commenttables", ['comments' => $comments]);
     }
     // public function admin_dashboard()
     // {

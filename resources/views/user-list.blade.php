@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex gap-9">
 @forelse ($users as $user)
-  <div class= "w-1/3 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 flex flex-col items-center text-center">
+  <div class= "w-200px bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 flex flex-col items-center text-center">
 
             <!-- Profile Image -->
             <div class="w-24 h-24 mb-4">
@@ -28,7 +28,7 @@
             <!-- Delete Button -->
             <div class="flex items-center justify-between px-4">
 
-            <a role="button" class=" mt-6 px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-medium text-sm rounded-lg shadow-md transition" href={{route("profile.show",$user->id)}}>View User</a>
+            <a role="button" class=" mt-6 px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-medium text-sm rounded-lg shadow-md transition" href={{route("profile.show",$user->id)}}>{{__('Joblink.View profile')}}</a>
             </div>
 
         </div>

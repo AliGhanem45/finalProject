@@ -35,7 +35,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.update')">
-                            {{ __('Profile') }}
+                            {{ __('Joblink.Edit profile') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->

@@ -7,7 +7,7 @@
                 @csrf
                 <input type="hidden" name="post_id" value="{{ $post->id ?? '' }}">
                 <div class="comment-input-field">
-                    <input type="text" name="content" placeholder="Add a comment..." class="comment-input" required>
+                    <input type="text" name="content" placeholder="{{ __('Joblink.Add a comment...') }}" class="comment-input" required>
                     <button type="submit" class="comment-submit-btn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
@@ -39,35 +39,35 @@
                             <form action="{{ route('comments.unlike',$comment->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="comment-action-btn like-btnclick">
-                                Unlike
+                                {{__('Unlike')}}
                                 </button>
                             </form>
                         @else
                             <form action="{{ route('comments.like',$comment->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="comment-action-btn like-btn" >
-                                Like
+                                {{__('Joblink.Like')}}
                                 </button>
                             </form>
                         @endif    
-                        <button class="comment-action-btn reply-btn" data-comment-id="{{ $comment->id }}">
+                        {{-- <button class="comment-action-btn reply-btn" data-comment-id="{{ $comment->id }}">
                             Reply
-                        </button>
-                        @if(Auth::id() === $comment->user_id)
+                        </button> --}}
+                        @can('delete',$comment)
                         <form action="{{ route('comments.destroy',$comment->id) }}"method="POST">
                             @csrf
                             @method('delete')
                             <button type="submit" class="comment-action-btn delete-btn">
-                                Delete
+                                {{__('JOBLINK.Delete')}}
                             </button>
                         </form>
-                        @endif
+                        @endcan
                     </div>
                 </div>
             </div>
         @empty
             <div class="no-comments">
-                <p>Be the first to comment</p>
+                <p>{{__('Be the first to comment')}}</p>
             </div>
         @endforelse
     </div>

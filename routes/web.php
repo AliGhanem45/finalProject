@@ -24,6 +24,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/explore', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/feed', [FeedController::class, 'index'])->name('feed');
     Route::get('/users', [DashboardController::class, 'user_list'])->name('userList');
+    Route::get('/users/follow', [DashboardController::class, 'follower_list'])->name('followList');
 });
 
 Route::middleware('auth')->group(function () {
@@ -49,6 +50,8 @@ Route::post('comments/{comment}/unlike', [CommentLikeController::class, 'unlike'
 Route::middleware(['auth', 'role:admin'])->prefix("/admin")->controller(AdminController::class)->group(function () {
     // Route::get("/dashboard", 'admin_dashboard')->name("admin.dashboard");
     Route::get("/users", 'get_all_users')->name("admin.dashboard");
+    Route::get("/posts/{user}", 'get_all_posts')->name("admin.posts.dashboard");
+    Route::get("/comments/{post}", 'get_all_comments')->name("admin.comments.dashboard");
     Route::delete("/users/{user}/delete", 'delete_user')->name("admin.users.destroy");
     Route::get("/users/{user}/view", 'view_user')->name("admin.view_user");
     Route::delete("/comments/{comment}/delete", 'delete_comment')->name("admin.delete_comment");
