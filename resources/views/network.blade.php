@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style1.css" />
     <link rel="stylesheet" href="network.css" />
     <link rel="stylesheet" href="responsive-network.css" />
+      @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
 
   <body>

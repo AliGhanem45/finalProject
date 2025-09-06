@@ -19,20 +19,20 @@
         <span>12h ago &middot; 4,205 readers</span> --}}
 
         <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1" class="read-more-link">{{__('Joblink.Read more')}}</a>
-        
+
     </div>
-    {{-- <div class="sidebar-ad">
+    <div class="sidebar-ad">
             <small>Ad &middot; &middot; &middot;</small>
             <p>Master the 5 priciples of web design</p>
             <div>
                 <img src="{{url('images/logo-white.jpg')}}">
-                
+
             </div>
             <b>Brand and Demand in Xiaomi</b>
             <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1" class="ad-link">Learn More</a>
-    </div> --}}
+    </div>
 
-    
+
 
     <div class="sidebar-useful-links">
         <a href="{{ route('about') }}">{{__('Joblink.About')}}</a>
@@ -42,7 +42,7 @@
             <a href="{{ route('language','ar') }}">ar</a>
             <a href="{{ route('language','en') }}">en</a>
         </div>
-        
+
 
         <div class="copyright-msg">
             <img src="images/logo.jpg">
