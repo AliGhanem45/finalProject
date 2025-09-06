@@ -46,6 +46,10 @@ class DashboardController extends Controller
         $user = auth()->user();
         $followersId=$user->followings()->pluck('user_id');
         $followers = User::whereIn('id',$followersId)->get();
+        // $search = Search::create([
+        //         'content' => request()->get('search'),
+        //         'user_id' => auth()->user()->id
+        //     ]);
         return view('followers', ['users' => $followers]);
 
     }

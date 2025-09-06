@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+            {{ __('Joblink.Profile Information') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Joblink.Update your account's profile information and email address.") }}
         </p>
     </header>
 
@@ -17,13 +17,13 @@
         @csrf
         @method('patch')
         <div>
-            <x-input-label for="name" :value="__('Name:')" />
+            <x-input-label for="name" :value="__('Joblink.Name:')" />
             <x-text-input id="name" name="name" type="text" class="my-3 block w-full" :value="old('name', $user->name)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div> 
 
         <div>
-            <x-input-label for="email" :value="__('Email:')" />
+            <x-input-label for="email" :value="__('Joblink.Email:')" />
             <x-text-input id="email" name="email" type="email" class="my-3 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
@@ -46,27 +46,27 @@
             @endif
         </div>
         <div>
-            <x-input-label for="profilePic" :value="__('Choose profile Pic:')"/>
+            <x-input-label for="profilePic" :value="__('Joblink.Choose profile Pic:')"/>
             <input id="profilePic" name="profilePic" type="file" class="my-3 inline-flex items-center px-4 py-2 bg-white border-black border-rounded-md font-semibold text-xs text-black uppercase tracking-widest shadow-sm hover:text-xs hover:bg-gray-700 hover:border-black-700 border hover:file-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"/>
             <x-input-error class="mt-2" :messages="$errors->get('profilePic')" />
         </div>
          <div>
-            <x-input-label for="coverPic" :value="__('Choose Cover Pic:')"/>
+            <x-input-label for="coverPic" :value="__('Joblink.Choose Cover Pic:')"/>
             <input id="coverPic" name="coverPic" type="file" class=" my-3 inline-flex items-center px-4 py-2 bg-white border-black border rounded-md font-semibold text-xs text-black uppercase tracking-widest shadow-sm hover:bg-gray-700 hover:text-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"/>
             <x-input-error class="mt-2" :messages="$errors->get('coverPic')" />
         </div>
          <div>
-            <x-input-label for="bio" :value="__('Write a bio:')"/>
+            <x-input-label for="bio" :value="__('Joblink.Write a bio:')"/>
             <x-textarea-input :value="old('bio', $user->bio)" id="bio" name="bio"></x-textarea-input>
             <x-input-error class="mt-2" :messages="$errors->get('bio')" />
         </div>
         <div>
-            <x-input-label for="location" :value="__('Your location:')" />
+            <x-input-label for="location" :value="__('Joblink.Your location:')" />
             <x-text-input :value="old('location', $user->location)" id="location" name="location" type="text" class="my-3 block w-full"/>
             <x-input-error class="mt-2" :messages="$errors->get('location')" />
         </div>
         <div>
-            <x-input-label for="profession" :value="__('Your Profession:')" />
+            <x-input-label for="profession" :value="__('Joblink.Your Profession:')" />
             <x-text-input :value="old('profession', $user->profession)" id="profession" name="profession" type="text" class="my-3 block w-full"/>
             <x-input-error class="mt-2" :messages="$errors->get('profession')" />
         </div>

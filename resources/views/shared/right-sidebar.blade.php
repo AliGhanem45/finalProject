@@ -4,7 +4,7 @@
         <h3>{{__('Joblink.Trending news')}}</h3>
         @foreach($topPosts as $topPost)
         <a href="{{ route('posts.show',$topPost->id)}}">{{$topPost->content}}</a>
-        <span>{{ $topPost->created_at->diffForHumans() }} &middot;{{$topPost->likes->count()}} Likes</span>
+        <span>{{ $topPost->created_at->diffForHumans() }} &middot;{{$topPost->likes->count()}}</span><span> {{__('Joblink.Likes')}}</span>
         @endforeach
         {{-- <a href="#">Careers growing horizontally too</a>
         <span>19h ago &middot; 1,552 readers</span>
@@ -21,7 +21,7 @@
         <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1" class="read-more-link">{{__('Joblink.Read more')}}</a>
         
     </div>
-    <div class="sidebar-ad">
+    {{-- <div class="sidebar-ad">
             <small>Ad &middot; &middot; &middot;</small>
             <p>Master the 5 priciples of web design</p>
             <div>
@@ -30,13 +30,13 @@
             </div>
             <b>Brand and Demand in Xiaomi</b>
             <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1" class="ad-link">Learn More</a>
-    </div>
+    </div> --}}
 
     
 
     <div class="sidebar-useful-links">
-        <a href="#">{{__('Joblink.About')}}</a>
-        <a href="#">Accessiblity</a>
+        <a href="{{ route('about') }}">{{__('Joblink.About')}}</a>
+        <a href="#">{{__('Joblink.Accessiblity')}}</a>
         <a href="#">{{__('Joblink.Privacy Policy')}}</a>
         <div class="sidebar-useful-links">
             <a href="{{ route('language','ar') }}">ar</a>

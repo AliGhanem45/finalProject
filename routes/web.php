@@ -14,6 +14,9 @@ use App\Http\Controllers\FeedController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/aboutus', function () {
+    return view('aboutus');
+})->name('about');
 Route::get('/lang/{lang}', function ($lang) {
     app()->setLocale($lang);
     session()->put('locale', $lang);

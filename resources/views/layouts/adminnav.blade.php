@@ -16,9 +16,9 @@
     <div class="navbar-center">
         <ul>
 
-            <li><a href="{{route('admin.dashboard')}}"><img src="{{url('images/jobs.png')}}"> <span>users</span></a></li>
+            {{-- <li><a href="{{route('admin.dashboard')}}"><img src="{{url('images/jobs.png')}}"> <span>users</span></a></li> --}}
 
-            <li><a href="#"><img src= "{{url('images/notification.png')}}"> <span>Notifications</span></a></li>
+            {{-- <li><a href="#"><img src= "{{url('images/notification.png')}}"> <span>Notifications</span></a></li> --}}
         </ul>
     </div>
     <div class="navbar-right">

@@ -28,7 +28,16 @@
             {{-- <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1">Discover more</a> --}}
         </div>
     </div>
-    
+    {{-- <div class="sidebar-ad">
+            <small>Ad &middot; &middot; &middot;</small>
+            <p>Master the 5 priciples of web design</p>
+            <div>
+                <img src="{{url('images/logo-white.jpg')}}">
+                
+            </div>
+            <b>Brand and Demand in Xiaomi</b>
+            <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1" class="ad-link">Learn More</a>
+    </div> --}}
 
     <p id="showMoreLink" onclick="toggleActivity()">Show more <b>+</b></p>
 </div>

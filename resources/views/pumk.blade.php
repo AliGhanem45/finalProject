@@ -55,7 +55,7 @@
       <div class="flex flex-col gap-4">
         <!-- Card 1 -->
         @forelse ($users as $user)
-        @if($user->id == Auth::user()->id)
+        @if($user->id == Auth::user()->id || Auth::user()->follows($user))
         @continue
         @endif
         <div
@@ -68,7 +68,7 @@
               class="w-14 h-14 rounded-full object-cover"
             />
             <div>
-              <h2 class="font-medium">{{$user->name}}</h2>
+              <h2 class="font-medium"><a href="{{ route('profile.show',$user->id) }}">{{$user->name}}</a></h2>
               <p class="text-sm text-gray-600">{{$user->profession}}</p>
             </div>
           </div>

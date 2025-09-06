@@ -6,7 +6,18 @@
         @endcan
         <div>
             <h1>{{$post->user->name}}</h1>
-            <button class="follow" type="submit">{{__('Joblink.Follow')}}</button>
+            @if(Auth::user()->id !== $post->user->id)
+                @if (Auth::user()->follows($post->user))
+                    <form action="{{ route('users.unfollow',$post->user->id) }}" method="POST">
+                        @csrf
+                    <button class="follow" type="submit">{{__('Joblink.UnFollow')}}</button>
+                @else
+                    <form action="{{ route('users.follow',$post->user->id) }}" method="POST">
+                        @csrf
+                        <button class="follow" type="submit">{{__('Joblink.Follow')}}</button>
+
+                @endif    
+            @endif        
             <small>{{$post->user->profession}}</small>
             <small>{{$post->created_at->diffForHumans()}}</small>
         </div>

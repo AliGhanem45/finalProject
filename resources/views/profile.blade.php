@@ -87,8 +87,8 @@
     </div>
 </div>
 <!-- ------profile-sidebar------ -->
-    <div class="profile-sidebar">
-        <div class="sidebar-people">
+     <div class="profile-sidebar">
+        {{-- <div class="sidebar-people">
             <h3>{{__('People you may know')}}</h3>
             @foreach ($topUsers as $topUser )
             @if(Auth::user()->id==$topUser->id)
@@ -114,6 +114,16 @@
                 </div>
             @endforeach
 
+        </div> --}}
+        <div class="sidebar-ad">
+            <small>Ad &middot; &middot; &middot;</small>
+            <p>Master the 5 priciples of web design</p>
+            <div>
+                {{-- <img src="{{url('images/logo-white.jpg')}}"> --}}
+                
+            </div>
+            <b>Brand and Demand in Xiaomi</b>
+            <a href="https://www.youtube.com/c/EasyTutorialsVideo?sub_confirmation=1" class="ad-link">Learn More</a>
         </div>
         <div class="sidebar-useful-links">
             <a href="#">About</a>

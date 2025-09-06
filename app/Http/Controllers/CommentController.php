@@ -41,7 +41,7 @@ class CommentController extends Controller
         Comment::create($validated);
         $commentor = auth()->user();
         $postOwner = $post->user;
-        // Mail::to($postOwner->email)->send(new CommentOnPostEmail($commentor,$postOwner));
+        Mail::to($postOwner->email)->send(new CommentOnPostEmail($commentor,$postOwner));
         return back();
     }
 
